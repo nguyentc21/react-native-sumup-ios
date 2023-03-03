@@ -14,7 +14,7 @@ yarn add react-native-sumup-ios
 
 ### iOS
 ```sh
-cd ios && pod install
+npx pod-install
 ```
 ### Android
 in progress...
@@ -24,8 +24,6 @@ in progress...
 ```js
 import SumUpModule from 'react-native-sumup-ios';
 ```
-
-// ...
 
 Set up Affiliate Key
 ```js
