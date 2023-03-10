@@ -39,7 +39,8 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "sumup",
+    "sumup-ios",
   ],
   "repository": "https://github.com/nguyentc21/react-native-sumup-ios",
   "author": "Nguyen Tc <nguyentc21@gmail.com> (https://github.com/nguyentc21)",

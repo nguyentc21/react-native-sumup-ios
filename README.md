@@ -1,6 +1,7 @@
 # react-native-sumup-ios
 
 Support SumUp on iOS
+(Bridge to use the SumUp SDK)
 
 ## Installation
 
