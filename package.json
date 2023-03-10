@@ -1,7 +1,7 @@
 {
   "name": "react-native-sumup-ios",
   "version": "0.1.1",
-  "description": "test",
+  "description": "Bridge to use the SumUp SDK",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
