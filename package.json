@@ -1,6 +1,6 @@
 {
   "name": "react-native-sumup-ios",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Bridge to use the SumUp SDK",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -40,7 +40,7 @@
     "react-native",
     "ios",
     "sumup",
-    "sumup-ios",
+    "sumup-ios"
   ],
   "repository": "https://github.com/nguyentc21/react-native-sumup-ios",
   "author": "Nguyen Tc <nguyentc21@gmail.com> (https://github.com/nguyentc21)",
