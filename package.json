@@ -1,6 +1,6 @@
 {
   "name": "react-native-sumup-ios",
-  "version": "0.1.5",
+  "version": "1.0.0",
   "description": "Bridge to use the SumUp SDK",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -84,7 +84,7 @@
   "engines": {
     "node": ">= 16.0.0"
   },
-  "packageManager": "^yarn@1.22.15",
+  "packageManager": "yarn@1.22.22",
   "jest": {
     "preset": "react-native",
     "modulePathIgnorePatterns": [
