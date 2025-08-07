@@ -1,9 +1,23 @@
-export type CurrencyCodeType = 'BGN' | 'BRL' | 'CHF' | 'CLP' | 'CZK' | 'DKK' | 'EUR' | 'GBP' | 'HUF' | 'NOK' | 'PLN' | 'RON' | 'SEK' | 'USD'
+export type CurrencyCodeType =
+  | 'BGN'
+  | 'BRL'
+  | 'CHF'
+  | 'CLP'
+  | 'CZK'
+  | 'DKK'
+  | 'EUR'
+  | 'GBP'
+  | 'HUF'
+  | 'NOK'
+  | 'PLN'
+  | 'RON'
+  | 'SEK'
+  | 'USD';
 
 interface SumUpResult {
   success: boolean;
 }
-export interface CheckoutResult extends SumUpResult {
+interface CheckoutResult extends SumUpResult {
   transactionCode: string;
   foreignTransactionID?: string;
   amount?: number;
@@ -15,7 +29,6 @@ declare class SumUpSDK {
   static getKey(): string;
   static async checkLogin(): Promise<boolean>;
   static async loginWithViewController(): Promise<boolean>;
-  static async loginWithToken(token: string): Promise<boolean>;
   static async logout(): Promise<boolean>;
   static async prepareForCheckout(): Promise<boolean>;
   static async checkout(
@@ -23,9 +36,10 @@ declare class SumUpSDK {
     totalAmount: number,
     currencyCode?: CurrencyCodeType = 'USD',
     tipAmount?: number,
-    foreignTransactionId?: string,
-    skipScreenOptions?: boolean,
-    token?: string,
+    foreignTransactionID?: string,
+    skipScreenOptions?: boolean
   ): Promise<CheckoutResult>;
 }
+
+export type { CheckoutResult };
 export default SumUpSDK;

@@ -36,13 +36,13 @@ class SumUpModule {
         SumUpModule.apiKey = key;
         return result;
       }
-      return;
+      return false;
     } catch (error) {
-      throw error;
+      throw new Error(`[RN-sumup-ios]: Setup API key Failed: ${error}`);
     }
   }
 
-  static testSDKIntegration() {
+  static async testSDKIntegration() {
     return NativeModules.SumUpNTC.testSDKIntegration();
   }
 
@@ -50,30 +50,19 @@ class SumUpModule {
     return SumUpModule.apiKey;
   }
 
-  static checkLogin() {
+  static async checkLogin() {
     return NativeModules.SumUpNTC.checkLogin();
   }
 
-  static loginWithViewController() {
+  static async loginWithViewController() {
     return NativeModules.SumUpNTC.presentLoginFromViewController();
   }
 
-  static loginWithToken(token) {
-    if (Platform.OS === 'ios') {
-      return NativeModules.SumUpNTC.loginToSumUpWithToken(token);
-    } else {
-      return NativeModules.SumUpNTC.loginToSumUpWithToken(
-        SumUpModule.apiKey,
-        token,
-      );
-    }
-  }
-
-  static logout() {
+  static async logout() {
     return NativeModules.SumUpNTC.logout();
   }
 
-  static prepareForCheckout() {
+  static async prepareForCheckout() {
     return NativeModules.SumUpNTC.preparePaymentCheckout();
   }
 
@@ -81,30 +70,29 @@ class SumUpModule {
     title,
     totalAmount,
     currencyCode = CURRENCY_CODES.USD,
-    tipAmount,
-    foreignTransactionId = '',
-    skipScreenOptions = false,
-    token = undefined,
+
+    tipAmount = 0,
+    foreignTransactionID = '',
+    skipScreenOptions = false
   ) {
     const request = {
       title,
       totalAmount: totalAmount.toString(),
       currencyCode,
       tipAmount: tipAmount ? tipAmount.toString() : undefined,
-      foreignTransactionId,
+      foreignTransactionID,
       skipScreenOptions: skipScreenOptions.toString(),
     };
     try {
       const isLogin = await SumUpModule.checkLogin();
       if (!isLogin) {
-        if (!token) throw new Error('Required login or token.');
-        await SumUpModule.loginWithToken(token);
+        throw new Error('Required login.');
       }
       const result = await NativeModules.SumUpNTC.paymentCheckout(request);
       const _result = processResult(result);
       return _result;
     } catch (error) {
-      throw new Error(`Error while authenticating: ${error}`);
+      throw new Error(`[RN-sumup-ios]: Error while authenticating: ${error}`);
     }
   }
 }
