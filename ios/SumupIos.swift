@@ -56,8 +56,8 @@ class SumUpNTC: NSObject {
 
   @objc func setupAPIKey(
     _ apiKey: String,
-    resolve: RCTPromiseResolveBlock,
-    reject: RCTPromiseRejectBlock
+    resolve: @escaping RCTPromiseResolveBlock,
+    reject: @escaping RCTPromiseRejectBlock
   ) {
     DispatchQueue.main.async {
       let setAPIKey = SumUpSDK.setup(withAPIKey: apiKey)
