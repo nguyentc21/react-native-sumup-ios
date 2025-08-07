@@ -64,7 +64,7 @@ class SumUpNTC: NSObject {
       if setAPIKey {
         resolve(true)
       } else {
-        reject(false)
+        resolve(false)
       }
     }
   }
@@ -77,7 +77,7 @@ class SumUpNTC: NSObject {
     if rs {
       resolve(true)
     } else {
-      reject(false)
+      resolve(false)
     }
   }
 
@@ -87,7 +87,7 @@ class SumUpNTC: NSObject {
   ) {
     DispatchQueue.main.async {
       guard
-        let rootView = getRootViewController()
+        let rootView = self.getRootViewController()
       else {
         let newError = NSError(
           domain: "", code: 200,
@@ -196,8 +196,7 @@ class SumUpNTC: NSObject {
     let skip = request["skipScreenOptions"]
 
     let checkOutRequest = CheckoutRequest(
-      total: total, title: title, currencyCode: checkoutCurrency,
-      paymentOptions: [.cardReader, .mobilePayment])
+      total: total, title: title, currencyCode: checkoutCurrency)
     if skip == "true" {
       checkOutRequest.skipScreenOptions = .success
     }
@@ -209,7 +208,7 @@ class SumUpNTC: NSObject {
     }
     DispatchQueue.main.async {
       guard
-        let rootView = getRootViewController()
+        let rootView = self.getRootViewController()
       else {
         let newError = NSError(
           domain: "", code: 200,

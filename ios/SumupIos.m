@@ -23,11 +23,11 @@ RCT_EXTERN_METHOD(
                   reject: (RCTPromiseRejectBlock) reject
                   )
 
-RCT_EXTERN_METHOD(
-                  loginToSumUpWithToken:(NSString *) token
-                  resolve:(RCTPromiseResolveBlock) resolve
-                  reject: (RCTPromiseRejectBlock) reject
-                  )
+// RCT_EXTERN_METHOD(
+//                   loginToSumUpWithToken:(NSString *) token
+//                   resolve:(RCTPromiseResolveBlock) resolve
+//                   reject: (RCTPromiseRejectBlock) reject
+//                   )
 
 RCT_EXTERN_METHOD(
                   checkLogin:(RCTPromiseResolveBlock) resolve

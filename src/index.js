@@ -33,6 +33,9 @@ class SumUpModule {
       if (!key) throw Error('Empty key!');
       if (Platform.OS === 'ios') {
         const result = await NativeModules.SumUpNTC.setupAPIKey(key);
+        if (!result) {
+          throw new Error('ERROR or SDK has been set up before!');
+        }
         SumUpModule.apiKey = key;
         return result;
       }
